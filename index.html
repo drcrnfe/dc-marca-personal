@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -12,15 +12,270 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="CSS/styles.css">
+<style>
+/* ==========================================================
+   DC — Design tokens v1 (base del futuro design system)
+   ========================================================== */
+:root{
+  /* Color */
+  --dc-naranja:      #E8530E;  /* primario · isotipo */
+  --dc-naranja-cta:  #B54005;  /* acción · AA sobre blanco */
+  --dc-naranja-soft: #FCEDE4;  /* tinte de superficie */
+  --dc-ink:          #17130E;  /* texto principal */
+  --dc-stone:        #635C53;  /* texto secundario · AA */
+  --dc-paper:        #FBFAF7;  /* fondo */
+  --dc-line:         #E8E2D8;  /* bordes y reglas */
+
+  /* Tipografía — Archivo variable: una familia, dos voces */
+  --font: "Archivo", system-ui, sans-serif;
+  --fs-hero:  clamp(2.9rem, 8.5vw, 6.8rem);
+  --fs-h2:    clamp(1.9rem, 4.2vw, 3.2rem);
+  --fs-h3:    clamp(1.15rem, 2vw, 1.45rem);
+  --fs-body:  1.0625rem;
+  --fs-small: .875rem;
+  --fs-eyebrow: .8125rem;
+
+  /* Espaciado */
+  --space-section: clamp(5rem, 12vw, 9.5rem);
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --maxw: 1180px;
+
+  /* Motion */
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --t-fast: 180ms;
+  --t-med: 420ms;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  font-size:var(--fs-body);
+  line-height:1.65;
+  color:var(--dc-ink);
+  background:var(--dc-paper);
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--dc-naranja);color:#fff}
+
+/* ---------- Accesibilidad base ---------- */
+.skip-link{
+  position:absolute;left:-999px;top:0;z-index:100;
+  background:var(--dc-ink);color:#fff;padding:.75rem 1.25rem;
+  font-weight:700;border-radius:0 0 8px 0;
+}
+.skip-link:focus{left:0}
+:focus-visible{outline:3px solid var(--dc-naranja);outline-offset:3px;border-radius:2px}
+
+/* ---------- Utilidades tipográficas ---------- */
+.display{
+  font-variation-settings:"wdth" 125;
+  font-weight:900;
+  letter-spacing:-.02em;
+  line-height:.96;
+  text-transform:uppercase;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-size:var(--fs-eyebrow);font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--dc-stone);
+}
+.eyebrow::before{
+  content:"";width:26px;height:2px;background:var(--dc-naranja);
+  clip-path:polygon(0 0,calc(100% - 7px) 0,calc(100% - 7px) -4px,100% 1px,calc(100% - 7px) 6px,calc(100% - 7px) 2px,0 2px);
+  transform:scaleY(3);
+}
+
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+
+/* ---------- Flecha DC (firma de marca) ---------- */
+.arrow-ico{display:inline-block;vertical-align:baseline}
+
+/* ---------- Avatar · Identity chip ---------- */
+.identity{display:flex;align-items:center;gap:.95rem;margin-block:1.6rem 1.2rem}
+.avatar{
+  position:relative;flex:none;width:60px;height:60px;border-radius:50%;
+  background:var(--dc-naranja-soft);
+  outline:3px solid var(--dc-naranja);outline-offset:3px;
+  display:grid;place-items:center;overflow:hidden;
+  font-weight:900;font-variation-settings:"wdth" 125;color:var(--dc-naranja);
+}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%}
+.avatar--sm{width:44px;height:44px;outline-width:2px;outline-offset:2px;font-size:.85rem}
+.identity .who b{display:block;font-weight:800;line-height:1.25}
+.identity .who span{font-size:var(--fs-small);color:var(--dc-stone);font-weight:600}
+.cta-band .identity{margin-block:1.8rem 0}
+.cta-band .avatar{outline-color:#fff;background:rgba(255,255,255,.18);color:#fff}
+.cta-band .identity .who b{color:#fff}
+.cta-band .identity .who span{color:rgba(255,255,255,.92)}
+
+/* ---------- Nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb, var(--dc-paper) 88%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--dc-line);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-block:.9rem;
+}
+.brand{
+  font-weight:900;font-variation-settings:"wdth" 125;
+  font-size:1.35rem;color:var(--dc-ink);text-decoration:none;
+  letter-spacing:-.01em;
+}
+.brand .c-arrow{color:var(--dc-naranja)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{
+  color:var(--dc-ink);text-decoration:none;font-weight:600;font-size:.95rem;
+  position:relative;
+}
+.nav-links a:not(.btn)::after{
+  content:"";position:absolute;left:0;bottom:-5px;width:0;height:2px;
+  background:var(--dc-naranja);transition:width var(--t-fast) var(--ease);
+}
+.nav-links a:not(.btn):hover::after,
+.nav-links a:not(.btn):focus-visible::after{width:100%}
+@media (max-width:720px){.nav-links li:not(:last-child){display:none}}
+
+/* ---------- Botones ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-weight:800;font-size:1rem;text-decoration:none;
+  padding:.95rem 1.6rem;border-radius:999px;
+  transition:transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+.btn .arr{transition:transform var(--t-fast) var(--ease)}
+.btn:hover .arr,.btn:focus-visible .arr{transform:translateX(5px)}
+.btn-primary{background:var(--dc-naranja-cta);color:#fff}
+.btn-primary:hover{background:var(--dc-ink)}
+.btn-ghost{color:var(--dc-ink);border:2px solid var(--dc-ink);background:transparent}
+.btn-ghost:hover{background:var(--dc-ink);color:#fff}
+.btn-inverse{background:#fff;color:var(--dc-naranja-cta)}
+.btn-inverse:hover{background:var(--dc-ink);color:#fff}
+
+/* ---------- Hero ---------- */
+.hero{padding-block:clamp(4rem, 10vw, 7.5rem) var(--space-section)}
+.hero h1{
+  font-size:var(--fs-hero);
+  margin-block:1.2rem 1.6rem;
+  max-width:12ch;
+}
+.hero h1 .hl{color:var(--dc-naranja);white-space:nowrap}
+.hero p.lead{
+  font-size:clamp(1.1rem,1.8vw,1.3rem);
+  color:var(--dc-stone);max-width:46ch;margin-bottom:2.2rem;
+}
+.hero p.lead strong{color:var(--dc-ink)}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--dc-line);
+  margin-top:clamp(3rem,7vw,5rem);
+}
+.stat{padding:1.6rem 0;border-right:1px solid var(--dc-line);padding-inline:1.4rem}
+.stat:first-child{padding-left:0}
+.stat:last-child{border-right:0}
+.stat b{
+  display:block;font-size:clamp(1.6rem,3.4vw,2.4rem);
+  font-weight:900;font-variation-settings:"wdth" 125;line-height:1;
+  color:var(--dc-naranja);
+}
+.stat span{font-size:var(--fs-small);color:var(--dc-stone);font-weight:600}
+@media (max-width:640px){
+  .stats{grid-template-columns:1fr}
+  .stat{border-right:0;border-bottom:1px solid var(--dc-line);padding-inline:0}
+  .stat:last-child{border-bottom:0}
+}
+
+/* ---------- Secciones ---------- */
+section{padding-block:var(--space-section)}
+section h2{font-size:var(--fs-h2);margin-block:1rem 1.5rem;max-width:20ch}
+.section-alt{background:#fff;border-block:1px solid var(--dc-line)}
+
+/* ---------- Trayectoria ---------- */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.about-grid p{color:var(--dc-stone);margin-bottom:1.1rem;max-width:56ch}
+.about-grid p strong{color:var(--dc-ink)}
+.timeline{list-style:none;border-left:2px solid var(--dc-line)}
+.timeline li{padding:.9rem 0 .9rem 1.4rem;position:relative}
+.timeline li::before{
+  content:"";position:absolute;left:-6px;top:1.45rem;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--dc-naranja);
+}
+.timeline b{display:block;font-weight:800}
+.timeline span{font-size:var(--fs-small);color:var(--dc-stone)}
+@media (max-width:820px){.about-grid{grid-template-columns:1fr}}
+
+/* ---------- Servicios (filas editoriales) ---------- */
+.svc{list-style:none;border-top:1px solid var(--dc-line);margin-top:2.5rem}
+.svc li{border-bottom:1px solid var(--dc-line)}
+.svc a{
+  display:grid;grid-template-columns:minmax(180px,.9fr) 1.6fr auto;
+  gap:1.5rem;align-items:center;
+  padding:2rem 0;text-decoration:none;color:inherit;
+  transition:padding-left var(--t-fast) var(--ease);
+}
+.svc a:hover,.svc a:focus-visible{padding-left:.9rem}
+.svc h3{font-size:var(--fs-h3);font-weight:900;font-variation-settings:"wdth" 118;text-transform:uppercase;letter-spacing:-.01em}
+.svc p{color:var(--dc-stone);font-size:.98rem;max-width:52ch}
+.svc .go{
+  width:48px;height:48px;border-radius:50%;
+  border:2px solid var(--dc-ink);display:grid;place-items:center;
+  transition:background var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease);
+}
+.svc .go svg{transition:transform var(--t-fast) var(--ease)}
+.svc a:hover .go,.svc a:focus-visible .go{background:var(--dc-naranja);border-color:var(--dc-naranja)}
+.svc a:hover .go svg,.svc a:focus-visible .go svg{transform:translateX(3px)}
+.svc a:hover .go svg path,.svc a:focus-visible .go svg path{stroke:#fff}
+.svc-note{
+  margin-top:2rem;padding-top:1.6rem;
+  border-top:1px solid var(--dc-line);
+  font-size:var(--fs-small);color:var(--dc-stone);font-weight:600;
+  max-width:56ch;
+}
+@media (max-width:720px){
+  .svc a{grid-template-columns:1fr auto;grid-template-rows:auto auto}
+  .svc p{grid-column:1/-1}
+}
+
+/* ---------- CTA Diagnóstico ---------- */
+.cta-band{background:var(--dc-naranja);color:#fff}
+.cta-band .eyebrow{color:#fff}
+.cta-band .eyebrow::before{background:#fff}
+.cta-band h2{color:#fff;max-width:16ch}
+.cta-band p{max-width:48ch;margin-bottom:2rem;font-weight:600}
+.cta-band .fineprint{font-size:var(--fs-small);opacity:.92;margin-top:1.4rem;font-weight:500}
+
+/* ---------- Footer ---------- */
+footer{padding-block:3.5rem;border-top:1px solid var(--dc-line)}
+.foot{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-start}
+.foot-links{list-style:none;display:flex;gap:1.8rem;flex-wrap:wrap}
+.foot-links a{color:var(--dc-ink);font-weight:700;text-decoration:none}
+.foot-links a:hover{color:var(--dc-naranja-cta);text-decoration:underline}
+.foot small{display:block;color:var(--dc-stone);margin-top:1.4rem;font-size:var(--fs-small)}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity var(--t-med) var(--ease),transform var(--t-med) var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
 <body>
 
 <a class="skip-link" href="#main">Saltar al contenido</a>
 
 <header class="nav">
-  <div class="container d-flex justify-content-between align-items-center py-3">
+  <div class="wrap nav-inner">
     <a class="brand" href="#inicio" aria-label="DC, Consultoría Marketing Digital — inicio">DC<span class="c-arrow">→</span></a>
     <nav aria-label="Principal">
       <ul class="nav-links">
@@ -34,60 +289,56 @@
 </header>
 
 <main id="main">
-  <section class="hero py-5" id="inicio" aria-labelledby="h-hero">
-    <div class="container">
-      <div class="row g-5 align-items-start">
-        <div class="col-lg-8">
-          <p class="eyebrow reveal">Consultoría Marketing Digital · Concón, Chile</p>
-          <h1 id="h-hero" class="display reveal">Estrategia<br>que <span class="hl">se ve&nbsp;<svg class="arrow-ico" width="0.82em" height="0.82em" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 40 38 10M38 10H16M38 10v22" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h1>
-          <div class="identity reveal">
-            <span class="avatar"><span aria-hidden="true">DC</span><img src="Assets/imagenes/Avatar.png" alt="Retrato de Daniel Carreño" loading="lazy" onerror="this.remove()"></span>
-            <p class="who"><b>Daniel Carreño</b><span>Consultor en Marketing Digital</span></p>
-          </div>
-          <p class="lead reveal">17 años en el cruce entre creatividad y resultados digitales. No diseño piezas sueltas: construyo <strong>ecosistemas de venta</strong> que funcionan.</p>
-          <div class="hero-ctas reveal d-flex flex-wrap gap-3">
-            <a class="btn btn-primary" href="https://wa.me/56945866468" target="_blank" rel="noopener">Hablemos por WhatsApp <span class="arr" aria-hidden="true">→</span></a>
-            <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="stats reveal" role="list">
-            <div class="stat" role="listitem"><b>17</b><span>años de experiencia</span></div>
-            <div class="stat" role="listitem"><b>360°</b><span>visión digital: media, diseño y automatización</span></div>
-            <div class="stat" role="listitem"><b>FOCO</b><span>en resultados medibles</span></div>
-          </div>
-        </div>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio" aria-labelledby="h-hero" style="padding-block-end:0">
+    <div class="wrap">
+      <p class="eyebrow reveal">Consultoría Marketing Digital · Concón, Chile</p>
+      <h1 id="h-hero" class="display reveal">Estrategia<br>que <span class="hl">se ve&nbsp;<svg class="arrow-ico" width="0.82em" height="0.82em" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 40 38 10M38 10H16M38 10v22" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h1>
+      <div class="identity reveal">
+        <span class="avatar"><span aria-hidden="true">DC</span><img src="Assets/imagenes/Avatar.png" alt="Retrato de Daniel Carreño" loading="lazy" onerror="this.remove()"></span>
+        <p class="who"><b>Daniel Carreño</b><span>Consultor en Marketing Digital</span></p>
+      </div>
+      <p class="lead reveal">17 años en el cruce entre creatividad y resultados digitales. No diseño piezas sueltas: construyo <strong>ecosistemas de venta</strong> que funcionan.</p>
+      <div class="hero-ctas reveal">
+        <a class="btn btn-primary" href="https://wa.me/56945866468" target="_blank" rel="noopener">Hablemos por WhatsApp <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="stats reveal" role="list">
+        <div class="stat" role="listitem"><b>17</b><span>años de experiencia</span></div>
+        <div class="stat" role="listitem"><b>360°</b><span>visión digital: media, diseño y automatización</span></div>
+        <div class="stat" role="listitem"><b>+ROI</b><span>foco en resultados medibles</span></div>
       </div>
     </div>
   </section>
 
-  <section id="trayectoria" class="py-5" aria-labelledby="h-tray">
-    <div class="container">
-      <div class="row g-5 align-items-start">
-        <div class="col-lg-7 reveal">
-          <p class="eyebrow">Trayectoria de impacto</p>
+  <!-- TRAYECTORIA -->
+  <section id="trayectoria" aria-labelledby="h-tray">
+    <div class="wrap">
+      <p class="eyebrow reveal">Trayectoria de impacto</p>
+      <div class="about-grid">
+        <div class="reveal">
           <h2 id="h-tray" class="display">Del set de TV al dashboard de resultados</h2>
           <p>Mi formación viene de la <strong>producción audiovisual de alto nivel</strong> (TVN, Leyenda VFX) y de la consultoría estratégica en marketing digital.</p>
           <p>Ese cruce es mi ventaja: entiendo cómo se construye una historia que capta atención <strong>y</strong> cómo se convierte esa atención en ventas, con datos sobre la mesa.</p>
           <p>Hoy lidero estrategia digital para marcas y pymes desde <strong>Agencia Fe Marketing</strong>, integrando paid media, UX/UI y automatización con IA.</p>
         </div>
-        <div class="col-lg-5">
-          <ul class="timeline reveal">
-            <li><b>Agencia Fe Marketing</b><span>Estrategia digital, paid media y contenido · 2023 — presente</span></li>
-            <li><b>Consultoría UX/UI &amp; IA</b><span>Diseño de producto y automatización · portafolio activo</span></li>
-            <li><b>Leyenda VFX</b><span>Coordinación de post-producción, spots de audiencia nacional</span></li>
-            <li><b>TVN</b><span>Producción audiovisual de alto nivel</span></li>
-          </ul>
-        </div>
+        <ul class="timeline reveal">
+          <li><b>Agencia Fe Marketing</b><span>Estrategia digital, paid media y contenido · 2023 — presente</span></li>
+          <li><b>Consultoría UX/UI &amp; IA</b><span>Diseño de producto y automatización · portafolio activo</span></li>
+          <li><b>Leyenda VFX</b><span>Coordinación de post-producción, spots de audiencia nacional</span></li>
+          <li><b>TVN</b><span>Producción audiovisual de alto nivel</span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section id="servicios" class="section-alt py-5" aria-labelledby="h-svc">
-    <div class="container">
+  <!-- SERVICIOS -->
+  <section id="servicios" class="section-alt" aria-labelledby="h-svc">
+    <div class="wrap">
       <p class="eyebrow reveal">Servicios</p>
       <h2 id="h-svc" class="display reveal">Tres formas de crecer</h2>
-      <ul class="svc list-unstyled mt-4">
+      <ul class="svc">
         <li class="reveal">
           <a href="https://wa.me/56945866468?text=Hola%20Daniel,%20me%20interesa%20Paid%20Media" target="_blank" rel="noopener">
             <h3>Paid Media avanzado</h3>
@@ -110,9 +361,9 @@
           </a>
         </li>
         <li class="reveal">
-          <a href="https://wa.me/56945866468?text=Hola%20Daniel,%20me%20interesa%20UX/UI%20para%20mi%20negocio" target="_blank" rel="noopener">
-            <h3>UX/UI para negocios</h3>
-            <p>Interfaces que no solo son bonitas: están diseñadas para guiar al usuario hacia la compra o el contacto.</p>
+          <a href="https://wa.me/56945866468?text=Hola%20Daniel,%20me%20interesa%20la%20Auditor%C3%ADa%20UX/UI" target="_blank" rel="noopener">
+            <h3>Auditoría UX/UI</h3>
+            <p>Diagnóstico de usabilidad y fricción en tu web o app: dónde pierdes usuarios y qué corregir primero, con prioridades accionables — no rediseño completo.</p>
             <span class="go" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12h16m0 0-6-6m6 6-6 6" stroke="#17130E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
         </li>
@@ -121,31 +372,27 @@
     </div>
   </section>
 
-  <section id="diagnostico" class="cta-band py-5" aria-labelledby="h-cta">
-    <div class="container">
-      <div class="row g-5 align-items-center">
-        <div class="col-lg-8">
-          <p class="eyebrow reveal">Sin costo · sin compromiso</p>
-          <h2 id="h-cta" class="display reveal">Diagnóstico gratuito de tu negocio</h2>
-          <p class="reveal">Sesión de 30 minutos + PDF con <b>3 acciones inmediatas</b> que puedes aplicar esta misma semana.</p>
-          <div class="hero-ctas reveal d-flex flex-wrap gap-3 mt-4">
-            <a class="btn btn-inverse" href="https://wa.me/56945866468?text=Hola%20Daniel,%20quiero%20mi%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">Agendar por WhatsApp <span class="arr" aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="identity reveal">
-            <span class="avatar avatar--sm"><span aria-hidden="true">DC</span><img src="Assets/imagenes/Avatar.png" alt="" loading="lazy" onerror="this.remove()"></span>
-            <p class="who"><b>Hablarás directamente conmigo</b><span>Sin bots ni intermediarios · respuesta en menos de 24 h hábiles</span></p>
-          </div>
-        </div>
+  <!-- DIAGNÓSTICO -->
+  <section id="diagnostico" class="cta-band" aria-labelledby="h-cta">
+    <div class="wrap">
+      <p class="eyebrow reveal">Sin costo · sin compromiso</p>
+      <h2 id="h-cta" class="display reveal">Diagnóstico gratuito de tu negocio</h2>
+      <p class="reveal">Sesión de 30 minutos + PDF con <b>3 acciones inmediatas</b> que puedes aplicar esta misma semana.</p>
+      <div class="hero-ctas reveal">
+        <a class="btn btn-inverse" href="https://wa.me/56945866468?text=Hola%20Daniel,%20quiero%20mi%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">Agendar por WhatsApp <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+      <div class="identity reveal">
+        <span class="avatar avatar--sm"><span aria-hidden="true">DC</span><img src="Assets/imagenes/Avatar.png" alt="" loading="lazy" onerror="this.remove()"></span>
+        <p class="who"><b>Hablarás directamente conmigo</b><span>Sin bots ni intermediarios · respuesta en menos de 24 h hábiles</span></p>
       </div>
     </div>
   </section>
+
 </main>
 
-<footer class="py-5">
-  <div class="container">
-    <div class="foot d-flex justify-content-between align-items-start flex-wrap gap-4">
+<footer>
+  <div class="wrap">
+    <div class="foot">
       <a class="brand" href="#inicio">DC<span class="c-arrow">→</span></a>
       <ul class="foot-links">
         <li><a href="https://www.linkedin.com/in/drcrnfe/" target="_blank" rel="noopener">LinkedIn</a></li>

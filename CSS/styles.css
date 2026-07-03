@@ -142,16 +142,16 @@ body{
 .btn-inverse:hover{background:var(--dc-ink);color:#fff}
 
 /* ---------- Hero ---------- */
-.hero{padding-block:clamp(4rem,10vw,7.5rem) var(--space-section)}
+.hero{padding-block:clamp(3.2rem,8.5vw,6.4rem) var(--space-section)}
 .hero h1{
-  font-size:var(--fs-hero);
-  margin-block:1.2rem 1.6rem;
+  font-size:calc(var(--fs-hero) * 0.85);
+  margin-block:1rem 1.3rem;
   max-width:12ch;
 }
 .hero h1 .hl{color:var(--dc-naranja);white-space:nowrap}
 .hero p.lead{
-  font-size:clamp(1.1rem,1.8vw,1.3rem);
-  color:var(--dc-stone);max-width:46ch;margin-bottom:2.2rem;
+  font-size:clamp(1rem,1.6vw,1.15rem);
+  color:var(--dc-stone);max-width:46ch;margin-bottom:1.8rem;
 }
 .hero p.lead strong{color:var(--dc-ink)}
 .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}

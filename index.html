@@ -405,20 +405,73 @@ footer{padding-block:3.5rem;border-top:1px solid var(--dc-line)}
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
 <script>
 (function(){
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var els = document.querySelectorAll('.reveal');
-  if (reduced || !('IntersectionObserver' in window)) {
-    els.forEach(function(e){ e.classList.add('in'); });
+
+  if (reduced) {
+    document.querySelectorAll('.reveal').forEach(function(e){
+      e.style.opacity = '1'; e.style.transform = 'none';
+    });
     return;
   }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+
+  var _a = Motion, animate = _a.animate, inView = _a.inView, stagger = _a.stagger;
+
+  /* 1 — Reveals con stagger por sección */
+  document.querySelectorAll('section, .nav').forEach(function(section){
+    var reveals = Array.from(section.querySelectorAll('.reveal'));
+    if (!reveals.length) return;
+    inView(section, function(){
+      animate(reveals,
+        { opacity: [0, 1], y: [22, 0] },
+        { duration: 0.65, delay: stagger(0.11), easing: [.22,.61,.36,1] }
+      );
+    }, { amount: 0.07 });
+  });
+
+  /* 2 — Contadores animados en stats */
+  var counted = false;
+  inView('.stats', function(){
+    if (counted) return;
+    counted = true;
+    document.querySelectorAll('.stat b').forEach(function(el){
+      var text  = el.textContent.trim();
+      var match = text.match(/(\d+)/);
+      if (!match) return;
+      var num    = parseInt(match[1]);
+      var pre    = text.slice(0, text.indexOf(match[1]));
+      var suf    = text.slice(text.indexOf(match[1]) + match[1].length);
+      animate(0, num, {
+        duration: 1.4,
+        easing: [.22,.61,.36,1],
+        onUpdate: function(v){ el.textContent = pre + Math.round(v) + suf; }
+      });
     });
-  }, {threshold:.12});
-  els.forEach(function(e){ io.observe(e); });
+  }, { amount: 0.5 });
+
+  /* 3 — Hover expresivo en botones de servicios */
+  document.querySelectorAll('.svc a').forEach(function(link){
+    var go = link.querySelector('.go');
+    link.addEventListener('mouseenter', function(){
+      animate(go, { scale: 1.18, rotate: -12 }, { duration: 0.22, easing: 'ease-out' });
+    });
+    link.addEventListener('mouseleave', function(){
+      animate(go, { scale: 1, rotate: 0 }, { duration: 0.22, easing: 'ease-out' });
+    });
+  });
+
+  /* 4 — Sombra en nav al hacer scroll */
+  var nav = document.querySelector('.nav');
+  window.addEventListener('scroll', function(){
+    var s = window.scrollY > 40;
+    animate(nav,
+      { boxShadow: s ? '0 4px 28px rgba(23,19,14,.10)' : '0 0px 0px rgba(23,19,14,0)' },
+      { duration: 0.35 }
+    );
+  }, { passive: true });
+
 })();
 </script>
 

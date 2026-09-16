@@ -1,14 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daniel Carreño — DC · Consultoría Marketing Digital</title>
-<meta name="description" content="17 años en el cruce entre creatividad y resultados digitales. Paid Media, Consultoría 360 y UX/UI para negocios. Diagnóstico gratuito con 3 acciones inmediatas.">
+<title>Daniel Carreño — DC · Creador de contenido y productor audiovisual</title>
+<meta name="description" content="Comunicador audiovisual. Hago contenido para redes de principio a fin: guion, grabación, edición, diseño y publicación. Video &amp; Reels, diseño, UX/UI y automatización. Concón, Valparaíso, Chile.">
 <meta name="author" content="Daniel Carreño Riveros">
-<meta property="og:title" content="Daniel Carreño — Estrategia que se ve">
-<meta property="og:description" content="Consultoría en marketing digital: Paid Media, Consultoría 360 y UX/UI para negocios. Concón, Chile.">
+<meta property="og:title" content="Daniel Carreño — Una persona, la cadena completa">
+<meta property="og:description" content="Guion, cámara, edición, diseño y publicación sin equipo externo. Tu contenido empieza a publicarse dentro del primer mes. Trabajos con RemedyCell, Josefa Isensee y Tres Almendros · Festival LBC. Concón, Chile.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
@@ -67,6 +68,10 @@ body{
 }
 .skip-link:focus{left:0}
 :focus-visible{outline:3px solid var(--dc-naranja);outline-offset:3px;border-radius:2px}
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
 
 /* ---------- Utilidades tipográficas ---------- */
 .display{
@@ -143,7 +148,7 @@ body{
 .nav-links a:not(.btn):hover::after,
 .nav-links a:not(.btn):focus-visible::after{width:100%}
 .nav-links .btn{width:100%;justify-content:center}
-@media (min-width:720px){
+@media (min-width:860px){
   .nav-inner{flex-direction:row;align-items:center;justify-content:space-between}
   .nav-links{width:auto;gap:1.4rem}
   .nav-links .btn{width:auto;justify-content:flex-start}
@@ -176,7 +181,7 @@ body{
 .hero h1 .hl{color:var(--dc-naranja);white-space:nowrap}
 .hero p.lead{
   font-size:clamp(1rem, 1.25rem + 0.8vw, 1.2rem);
-  color:var(--dc-stone);max-width:100%;margin-bottom:1.6rem;
+  color:var(--dc-stone);max-width:58ch;margin-bottom:1.6rem;
 }
 .hero p.lead strong{color:var(--dc-ink)}
 .hero-ctas{display:flex;flex-direction:column;align-items:stretch;gap:.9rem;flex-wrap:wrap}
@@ -212,77 +217,193 @@ body{
 .trust-metric{
   display:flex;align-items:baseline;gap:.5rem;
   padding-left:2rem;border-left:1px solid var(--dc-line);
-  white-space:nowrap;
 }
 .trust-metric b{font-size:1.5rem;font-weight:900;color:var(--dc-naranja);font-variation-settings:"wdth" 125}
 .trust-metric span{font-size:var(--fs-small);color:var(--dc-stone);font-weight:600}
-@media (max-width:720px){
+@media (max-width:860px){
   .trust-inner{flex-direction:column;align-items:flex-start;gap:1.2rem}
   .trust-metric{border-left:0;padding-left:0;border-top:1px solid var(--dc-line);padding-top:1rem;width:100%}
 }
 
 /* ---------- Secciones ---------- */
 section{padding-block:var(--space-section)}
-section h2{font-size:var(--fs-h2);margin-block:1rem 1.5rem;max-width:20ch}
-.svc-intro{color:var(--dc-stone);max-width:56ch;font-size:1.05rem}
+section h2{font-size:var(--fs-h2);margin-block:1rem 1.5rem;max-width:22ch}
+.svc-intro{color:var(--dc-stone);max-width:60ch;font-size:1.05rem}
 .section-alt{background:#fff;border-block:1px solid var(--dc-line)}
+.sub-label{
+  font-size:var(--fs-eyebrow);font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dc-stone);
+}
+
+/* ---------- Trabajos ---------- */
+.work-legend{
+  margin-top:2.2rem;padding:.9rem 1.1rem;
+  background:var(--dc-naranja-soft);border-left:3px solid var(--dc-naranja);
+  font-size:var(--fs-small);font-weight:700;color:var(--dc-ink);
+  max-width:60ch;
+}
+.works{list-style:none;display:grid;grid-template-columns:1fr;gap:1.4rem;margin-top:1.6rem}
+.work{
+  background:#fff;border:1px solid var(--dc-line);border-radius:14px;
+  padding:clamp(1.3rem,3.5vw,2.1rem);
+  display:flex;flex-direction:column;gap:1rem;
+}
+.section-alt .work{background:var(--dc-paper)}
+.work-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1rem}
+.work-head h3{
+  font-size:var(--fs-h3);font-weight:900;font-variation-settings:"wdth" 118;
+  text-transform:uppercase;letter-spacing:-.01em;
+}
+.work-tag{
+  font-size:var(--fs-eyebrow);font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--dc-naranja-cta);
+}
+.work-meta{
+  display:grid;grid-template-columns:1fr;gap:.6rem 2rem;
+  border-block:1px solid var(--dc-line);padding-block:.85rem;
+  font-size:var(--fs-small);
+}
+.work-meta > div{display:flex;gap:.55rem;flex-wrap:wrap;align-items:baseline}
+.work-meta dt{font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--dc-stone);font-size:var(--fs-eyebrow)}
+.work-meta dd{font-weight:600;color:var(--dc-ink)}
+.work p{color:var(--dc-stone);max-width:62ch}
+.work p strong{color:var(--dc-ink)}
+
+/* Roles: lo apagado no lo hizo él */
+.roles{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem}
+.roles li{
+  font-size:var(--fs-eyebrow);font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  padding:.4rem .8rem;border-radius:999px;
+}
+.roles .on{background:var(--dc-ink);color:#fff}
+.roles .off{
+  background:transparent;color:var(--dc-stone);
+  border:1px dashed var(--dc-line);opacity:.8;
+}
+.roles .off::before{content:"— "}
+
+.work-links{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.work-links .lbl{
+  font-size:var(--fs-eyebrow);font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dc-stone);margin-right:.2rem;
+}
+.vlink{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.9rem;font-weight:800;text-decoration:none;
+  color:var(--dc-ink);border:2px solid var(--dc-ink);
+  padding:.45rem .95rem;border-radius:999px;
+  transition:background var(--t-fast) var(--ease),color var(--t-fast) var(--ease),transform var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease);
+}
+.vlink:hover,.vlink:focus-visible{background:var(--dc-naranja);border-color:var(--dc-naranja);color:#fff;transform:translateY(-2px)}
+.vlink svg{flex:none}
+@media (min-width:720px){
+  .work-meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (min-width:980px){
+  .works{grid-template-columns:repeat(2,1fr)}
+  .work--wide{grid-column:1 / -1}
+}
+
+/* ---------- Columnas de listas ---------- */
+.cols{display:grid;grid-template-columns:1fr;gap:clamp(1.6rem,4vw,3rem);margin-top:2.6rem}
+.cols h4{
+  font-size:var(--fs-eyebrow);font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dc-stone);margin-bottom:.9rem;
+}
+.ticks{list-style:none;display:grid;gap:.55rem}
+.ticks li{position:relative;padding-left:1.4rem;color:var(--dc-stone);font-weight:600;font-size:.98rem}
+.ticks li::before{
+  content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--dc-naranja);
+}
+.ticks li strong{color:var(--dc-ink)}
+@media (min-width:720px){.cols{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- Qué hago (especialidades) ---------- */
+.specs{list-style:none;display:grid;grid-template-columns:1fr;gap:1.2rem;margin-top:2.5rem}
+.spec{
+  border:1px solid var(--dc-line);border-radius:14px;background:var(--dc-paper);
+  padding:1.5rem;display:flex;flex-direction:column;gap:.75rem;
+}
+.section-alt .spec{background:var(--dc-paper)}
+.spec h3{font-size:var(--fs-h3);font-weight:900;font-variation-settings:"wdth" 118;text-transform:uppercase;letter-spacing:-.01em}
+.spec p{color:var(--dc-stone);font-size:.98rem}
+.spec .where{
+  margin-top:auto;padding-top:.85rem;border-top:1px solid var(--dc-line);
+  font-size:var(--fs-small);color:var(--dc-ink);font-weight:700;
+}
+.spec .where em{
+  display:block;font-style:normal;font-size:var(--fs-eyebrow);font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--dc-stone);margin-bottom:.25rem;
+}
+@media (min-width:720px){.specs{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1040px){.specs{grid-template-columns:repeat(3,1fr)}}
+
+.notes{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:2.6rem;padding-top:2.2rem;border-top:1px solid var(--dc-line)}
+.notes h4{font-weight:800;margin-bottom:.4rem;font-size:1.05rem}
+.notes p{color:var(--dc-stone);font-size:.98rem;max-width:52ch}
+@media (min-width:720px){.notes{grid-template-columns:repeat(2,1fr)}}
 
 /* ---------- Trayectoria ---------- */
 .about-grid{display:grid;grid-template-columns:1fr;gap:clamp(1.4rem,4vw,2.5rem);align-items:start}
-.about-grid p{color:var(--dc-stone);margin-bottom:1.1rem;max-width:56ch}
+.about-grid p{color:var(--dc-stone);margin-bottom:1.1rem;max-width:58ch}
 .about-grid p strong{color:var(--dc-ink)}
+.about-grid h4{margin-top:2.2rem;margin-bottom:.9rem}
 .timeline{list-style:none;border-left:2px solid var(--dc-line)}
 .timeline li{padding:.9rem 0 .9rem 1.4rem;position:relative}
 .timeline li::before{
-  content:"";position:absolute;left:-6px;top:1.45rem;
+  content:"";position:absolute;left:-6px;top:1.75rem;
   width:10px;height:10px;border-radius:50%;
   background:var(--dc-naranja);
 }
-.timeline b{display:block;font-weight:800}
-.timeline span{font-size:var(--fs-small);color:var(--dc-stone)}
+.timeline b{display:block;font-weight:800;line-height:1.3}
+.timeline span{display:block;font-size:var(--fs-small);color:var(--dc-stone)}
+.timeline em{
+  display:block;font-style:normal;font-size:var(--fs-eyebrow);font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--dc-naranja-cta);
+}
 .timeline li.in-progress::before{background:transparent;border:2px solid var(--dc-naranja)}
-.timeline li.in-progress span{color:var(--dc-naranja-cta);font-weight:700}
 @media (min-width:820px){.about-grid{grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,5rem)}}
 
-/* ---------- Servicios (filas editoriales) ---------- */
-.svc{list-style:none;border-top:1px solid var(--dc-line);margin-top:2.5rem}
-.svc li{border-bottom:1px solid var(--dc-line)}
-.svc a{
-  display:grid;grid-template-columns:1fr;gap:.8rem 1rem;align-items:start;
-  padding:1.35rem 0;text-decoration:none;color:inherit;
-  transition:padding-left var(--t-fast) var(--ease);
-}
-.svc a:hover,.svc a:focus-visible{padding-left:.9rem}
-.svc h3{font-size:var(--fs-h3);font-weight:900;font-variation-settings:"wdth" 118;text-transform:uppercase;letter-spacing:-.01em}
-.svc p{color:var(--dc-stone);font-size:.98rem;max-width:52ch}
-.svc .go{
-  width:44px;height:44px;border-radius:50%;
-  border:2px solid var(--dc-ink);display:grid;place-items:center;
-  transition:background var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease);
-}
-.svc .go svg{transition:transform var(--t-fast) var(--ease)}
-.svc a:hover .go,.svc a:focus-visible .go{background:var(--dc-naranja);border-color:var(--dc-naranja)}
-.svc a:hover .go svg,.svc a:focus-visible .go svg{transform:translateX(3px)}
-.svc a:hover .go svg path,.svc a:focus-visible .go svg path{stroke:#fff}
-.svc-note{
-  margin-top:2rem;padding-top:1.6rem;
-  border-top:1px solid var(--dc-line);
-  font-size:var(--fs-small);color:var(--dc-stone);font-weight:600;
-  max-width:56ch;
-}
-@media (min-width:720px){
-  .svc a{grid-template-columns:minmax(180px,.9fr) 1.6fr auto;gap:1.5rem;align-items:center;padding:2rem 0}
-  .svc p{grid-column:auto}
+.stack{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem}
+.stack li{
+  font-size:var(--fs-small);font-weight:700;color:var(--dc-ink);
+  background:var(--dc-naranja-soft);border:1px solid var(--dc-line);
+  padding:.35rem .8rem;border-radius:999px;
 }
 
-/* ---------- CTA Diagnóstico ---------- */
+/* ---------- Cómo trabajo (proceso) ---------- */
+.steps{list-style:none;display:grid;grid-template-columns:1fr;gap:1.1rem;margin-top:2.5rem}
+.step{border-top:2px solid var(--dc-ink);padding-top:.9rem}
+.step b{display:block;font-size:var(--fs-eyebrow);font-weight:800;letter-spacing:.14em;color:var(--dc-naranja-cta);margin-bottom:.25rem}
+.step h3{font-size:1.1rem;font-weight:900;font-variation-settings:"wdth" 118;text-transform:uppercase;margin-bottom:.35rem}
+.step p{color:var(--dc-stone);font-size:.95rem}
+@media (min-width:640px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:980px){.steps{grid-template-columns:repeat(3,1fr);gap:1.6rem}}
+
+.callout{
+  margin-top:2.6rem;padding:clamp(1.3rem,3.5vw,2rem);
+  background:var(--dc-naranja-soft);border-radius:14px;
+}
+.callout h3{font-size:1.15rem;font-weight:900;margin-bottom:.6rem}
+.callout p{color:var(--dc-stone);max-width:62ch}
+.callout p strong{color:var(--dc-ink)}
+
+/* ---------- CTA contacto ---------- */
 .cta-band{background:var(--dc-naranja);color:#fff}
 .cta-band .eyebrow{color:#fff}
 .cta-band .eyebrow::before{background:#fff}
 .cta-band h2{color:#fff;max-width:16ch}
-.cta-band p{max-width:48ch;margin-bottom:2rem;font-weight:600}
-.cta-band .fineprint{font-size:var(--fs-small);opacity:.92;margin-top:1.4rem;font-weight:500}
+.cta-band p{max-width:54ch;margin-bottom:2rem;font-weight:600}
 .cta-band .avatar{outline-color:#fff;background:rgba(255,255,255,.18);color:#fff;box-shadow:0 8px 22px rgba(255,255,255,0.12),0 2px 6px rgba(0,0,0,0.04)}
+.contact-grid{
+  display:grid;grid-template-columns:1fr;gap:1.2rem;
+  margin-block:2.2rem 0;padding-top:1.8rem;border-top:1px solid rgba(255,255,255,.35);
+}
+.contact-grid dt{font-size:var(--fs-eyebrow);font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.9;margin-bottom:.2rem}
+.contact-grid dd{font-weight:700;overflow-wrap:anywhere}
+.contact-grid dd a{color:#fff;text-decoration:none;border-bottom:2px solid rgba(255,255,255,.5)}
+.contact-grid dd a:hover{border-bottom-color:#fff}
+@media (min-width:720px){.contact-grid{grid-template-columns:repeat(4,1fr)}}
 
 /* ---------- Footer ---------- */
 footer{padding-block:3.5rem;border-top:1px solid var(--dc-line)}
@@ -313,12 +434,13 @@ footer{padding-block:3.5rem;border-top:1px solid var(--dc-line)}
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="#inicio" aria-label="DC, Consultoría Marketing Digital — inicio">DC<span class="c-arrow">→</span></a>
+    <a class="brand" href="#inicio" aria-label="DC, Daniel Carreño — inicio">DC<span class="c-arrow">→</span></a>
     <nav aria-label="Principal">
       <ul class="nav-links">
+        <li><a href="#trabajos">Trabajos</a></li>
+        <li><a href="#que-hago">Qué hago</a></li>
         <li><a href="#trayectoria">Trayectoria</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#diagnostico">Diagnóstico</a></li>
+        <li><a href="#como-trabajo">Cómo trabajo</a></li>
         <li><a class="btn btn-primary" href="https://wa.me/56945866468" target="_blank" rel="noopener">WhatsApp <span class="arr" aria-hidden="true">→</span></a></li>
       </ul>
     </nav>
@@ -330,36 +452,204 @@ footer{padding-block:3.5rem;border-top:1px solid var(--dc-line)}
   <!-- HERO -->
   <section class="hero" id="inicio" aria-labelledby="h-hero" style="padding-block-end:0">
     <div class="wrap">
-      <p class="eyebrow reveal">Consultoría Marketing Digital · Concón, Chile</p>
-      <h1 id="h-hero" class="display reveal">Estrategia<br>que <span class="hl">se ve&nbsp;<svg class="arrow-ico" width="0.82em" height="0.82em" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 40 38 10M38 10H16M38 10v22" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h1>
+      <p class="eyebrow reveal">Creador de contenido · Productor audiovisual · Diseñador UX/UI</p>
+      <h1 id="h-hero" class="display reveal">Una persona.<br>La cadena <span class="hl">completa&nbsp;<svg class="arrow-ico" width="0.82em" height="0.82em" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 40 38 10M38 10H16M38 10v22" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h1>
       <div class="identity reveal">
         <span class="avatar"><span aria-hidden="true">DC</span><img src="Assets/imagenes/Avatar.png" alt="Retrato de Daniel Carreño" loading="lazy" onerror="this.remove()"></span>
-        <p class="who"><b>Daniel Carreño</b><span>Consultor en Marketing Digital</span></p>
+        <p class="who"><b>Daniel Carreño</b><span>Comunicador audiovisual · Concón, Valparaíso</span></p>
       </div>
-      <p class="lead reveal">17 años en el cruce entre creatividad y resultados digitales. No diseño piezas sueltas: construyo <strong>ecosistemas de venta</strong> que funcionan.</p>
+      <p class="lead reveal">Guion, cámara, edición, diseño y publicación sin equipo externo ni esperas de terceros. <strong>Tu contenido empieza a publicarse dentro del primer mes</strong>, no después de un PDF de estrategia.</p>
       <div class="hero-ctas reveal">
         <a class="btn btn-primary" href="https://wa.me/56945866468" target="_blank" rel="noopener">Hablemos por WhatsApp <span class="arr" aria-hidden="true">→</span></a>
-        <a class="btn btn-ghost" href="#servicios">Ver cómo trabajo</a>
+        <a class="btn btn-ghost" href="#trabajos">Ver trabajos publicados</a>
       </div>
       <div class="stats reveal" role="list">
-        <div class="stat" role="listitem"><b>17</b><span>años de experiencia</span></div>
-        <div class="stat" role="listitem"><b>360°</b><span>visión digital: media, diseño y automatización</span></div>
-        <div class="stat" role="listitem"><b>+ROI</b><span>foco en resultados medibles</span></div>
+        <div class="stat" role="listitem"><b>+15</b><span>años en comunicación audiovisual, producción y diseño</span></div>
+        <div class="stat" role="listitem"><b>4</b><span>especialidades que cubro sin externalizar</span></div>
+        <div class="stat" role="listitem"><b>+50%</b><span>de aumento en visualizaciones en redes de clientes de Agencia Fe</span></div>
       </div>
     </div>
   </section>
 
   <!-- PRUEBA SOCIAL -->
-  <section class="trust reveal" aria-label="Marcas que han trabajado conmigo">
+  <section class="trust reveal" aria-label="Marcas para las que he producido contenido">
     <div class="wrap trust-inner">
-      <span class="trust-label">Han confiado en este trabajo</span>
+      <span class="trust-label">He producido contenido para</span>
       <div class="trust-names">
-        <span>LATAM Bajo Cero</span>
+        <span>RemedyCell</span>
         <span>Josefa Isensee</span>
-        <span>Remedycell</span>
+        <span>Tres Almendros · Festival LBC</span>
       </div>
       <div class="trust-metric">
-        <b>151.200</b><span>cuentas alcanzadas<br>en campaña Meta Ads · LBC</span>
+        <b>151.200</b><span>cuentas alcanzadas<br>en campaña Meta Ads · Festival LBC</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRABAJOS -->
+  <section id="trabajos" aria-labelledby="h-work">
+    <div class="wrap">
+      <p class="eyebrow reveal">#01 — Trabajos</p>
+      <h2 id="h-work" class="display reveal">Qué hice yo exactamente</h2>
+      <p class="svc-intro reveal">Cada ficha declara mi rol real en la pieza. Los enlaces llevan directo al material publicado, no a un montaje de portafolio.</p>
+      <p class="work-legend reveal">Lo que aparece apagado no lo hice yo.</p>
+
+      <ul class="works">
+
+        <!-- RemedyCell -->
+        <li class="work reveal">
+          <div class="work-head">
+            <h3>RemedyCell</h3>
+            <span class="work-tag">Salud y bienestar</span>
+          </div>
+          <dl class="work-meta">
+            <div><dt>Formato</dt><dd>Video vertical y post para redes</dd></div>
+            <div><dt>Canal</dt><dd>Instagram</dd></div>
+          </dl>
+          <p>Contenido audiovisual para una marca del área salud y bienestar. <strong>Grabación en locación y edición completa a cargo mío.</strong></p>
+          <ul class="roles" aria-label="Roles en el proyecto RemedyCell">
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Dirección</li>
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Grabación</li>
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Edición</li>
+            <li class="off"><span class="sr-only">No lo hice: </span>Planificación</li>
+            <li class="off"><span class="sr-only">No lo hice: </span>Diseño</li>
+            <li class="off"><span class="sr-only">No lo hice: </span>Publicación</li>
+          </ul>
+          <div class="work-links">
+            <span class="lbl">Ver</span>
+            <a class="vlink" href="https://www.instagram.com/reel/DNYXofny3E4/" target="_blank" rel="noopener"><svg width="12" height="14" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1.2 11 7 1 12.8z" fill="currentColor"/></svg>Video 01<span class="sr-only"> de RemedyCell en Instagram</span></a>
+            <a class="vlink" href="https://www.instagram.com/reel/DJ2MHXOq2T9/" target="_blank" rel="noopener"><svg width="12" height="14" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1.2 11 7 1 12.8z" fill="currentColor"/></svg>Video 02<span class="sr-only"> de RemedyCell en Instagram</span></a>
+            <a class="vlink" href="https://www.instagram.com/p/DI4HLTtM70m/" target="_blank" rel="noopener"><svg width="12" height="14" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1.2 11 7 1 12.8z" fill="currentColor"/></svg>Video 03<span class="sr-only"> de RemedyCell en Instagram</span></a>
+          </div>
+        </li>
+
+        <!-- Josefa Isensee -->
+        <li class="work reveal">
+          <div class="work-head">
+            <h3>Josefa Isensee</h3>
+            <span class="work-tag">Marca personal</span>
+          </div>
+          <dl class="work-meta">
+            <div><dt>Formato</dt><dd>Video vertical, fotografía y diseño</dd></div>
+            <div><dt>Canal</dt><dd>Instagram</dd></div>
+          </dl>
+          <p>Contenido para la cuenta de Josefa Isensee, modelo y ex Miss Chile 1983. <strong>Todo el material publicado en el perfil desde su primera pieza es trabajo mío</strong>, salvo las colaboraciones con otras marcas. Incluye testimonios en video vertical con subtítulos, lower third y placa de cierre.</p>
+          <ul class="roles" aria-label="Roles en el proyecto Josefa Isensee">
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Planificación</li>
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Dirección</li>
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Grabación</li>
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Edición</li>
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Diseño</li>
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Publicación</li>
+          </ul>
+          <div class="work-links">
+            <span class="lbl">Ver</span>
+            <a class="vlink" href="https://www.instagram.com/josefaisensee/" target="_blank" rel="noopener"><svg width="12" height="14" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1.2 11 7 1 12.8z" fill="currentColor"/></svg>Cuenta completa<span class="sr-only"> de Josefa Isensee en Instagram</span></a>
+          </div>
+        </li>
+
+        <!-- Tres Almendros · Festival LBC -->
+        <li class="work work--wide reveal">
+          <div class="work-head">
+            <h3>Tres Almendros · Festival LBC</h3>
+            <span class="work-tag">Evento · Marca</span>
+          </div>
+          <dl class="work-meta">
+            <div><dt>Formato</dt><dd>Cobertura audiovisual de evento</dd></div>
+            <div><dt>Canal</dt><dd>Instagram</dd></div>
+          </dl>
+          <p>Producción audiovisual de un evento de marca: plan de rodaje, dirección en terreno, grabación y edición, <strong>con entrega de piezas para publicación inmediata</strong>.</p>
+          <ul class="roles" aria-label="Roles en el proyecto Tres Almendros · Festival LBC">
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Planificación</li>
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Dirección</li>
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Grabación</li>
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Edición</li>
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Diseño</li>
+            <li class="on"><span class="sr-only">Sí lo hice: </span>Publicación</li>
+          </ul>
+          <div class="work-links">
+            <span class="lbl">Ver</span>
+            <a class="vlink" href="https://www.instagram.com/reel/Dbwc-b1pS9I/" target="_blank" rel="noopener"><svg width="12" height="14" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1.2 11 7 1 12.8z" fill="currentColor"/></svg>Video 01<span class="sr-only"> del Festival LBC en Instagram</span></a>
+            <a class="vlink" href="https://www.instagram.com/reel/DbrS92GOB-P/" target="_blank" rel="noopener"><svg width="12" height="14" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1.2 11 7 1 12.8z" fill="currentColor"/></svg>Video 02<span class="sr-only"> del Festival LBC en Instagram</span></a>
+            <a class="vlink" href="https://www.instagram.com/reel/DbLh9Q4u-OC/" target="_blank" rel="noopener"><svg width="12" height="14" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1.2 11 7 1 12.8z" fill="currentColor"/></svg>Video 03<span class="sr-only"> del Festival LBC en Instagram</span></a>
+            <a class="vlink" href="https://www.instagram.com/reel/DbEKP7ON_Xe/" target="_blank" rel="noopener"><svg width="12" height="14" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1.2 11 7 1 12.8z" fill="currentColor"/></svg>Video 04<span class="sr-only"> del Festival LBC en Instagram</span></a>
+          </div>
+        </li>
+
+      </ul>
+
+      <div class="cols">
+        <div class="reveal">
+          <h4>Formatos que produzco</h4>
+          <ul class="ticks">
+            <li>Reel vertical 9:16 con subtítulos</li>
+            <li>Testimonio en video de 30 a 40 segundos</li>
+            <li>Cobertura de evento y detrás de cámara</li>
+            <li>Carrusel y placa gráfica para feed</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <h4>Qué entrego listo</h4>
+          <ul class="ticks">
+            <li>Pieza exportada en el formato de cada canal</li>
+            <li>Subtítulos quemados y gráfica de marca aplicada</li>
+            <li>Versiones alternativas de portada y corte</li>
+            <li>Archivo ordenado y respaldado</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout reveal">
+        <h3>Material adicional</h3>
+        <p>Tengo más piezas de estos y otros proyectos en archivo. Si quieren ver un formato específico —un testimonio, una pieza de producto, una gráfica— <strong>lo envío el mismo día</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUÉ HAGO -->
+  <section id="que-hago" class="section-alt" aria-labelledby="h-svc">
+    <div class="wrap">
+      <p class="eyebrow reveal">#02 — Qué hago</p>
+      <h2 id="h-svc" class="display reveal">Cuatro especialidades, una sola persona</h2>
+      <p class="svc-intro reveal">Resuelvo la pieza completa sin depender de un equipo externo. Cada especialidad viene con el lugar donde efectivamente la he ejercido.</p>
+
+      <ul class="specs">
+        <li class="spec reveal">
+          <h3>Video &amp; Reels</h3>
+          <p>Vertical 9:16 nativo: guion, grabación, edición, subtítulos, lower thirds y placa de cierre de marca.</p>
+          <p class="where"><em>Dónde lo he hecho</em>RemedyCell · Josefa Isensee · Tres Almendros</p>
+        </li>
+        <li class="spec reveal">
+          <h3>Diseño gráfico &amp; branding</h3>
+          <p>Identidad visual, placas, carruseles y adaptación de piezas por formato y canal.</p>
+          <p class="where"><em>Dónde lo he hecho</em>Agencia Fe Marketing</p>
+        </li>
+        <li class="spec reveal">
+          <h3>UX/UI Design</h3>
+          <p>Arquitectura de información, wireframes, prototipado en Figma e implementación en HTML/CSS.</p>
+          <p class="where"><em>Dónde lo he hecho</em>Proyecto propio de portafolio digital</p>
+        </li>
+        <li class="spec reveal">
+          <h3>IA &amp; automatización</h3>
+          <p>Flujos con Make y n8n, y uso de IA para escalar tareas repetitivas de producción de contenido.</p>
+          <p class="where"><em>Dónde lo he hecho</em>Procesos internos de trabajo</p>
+        </li>
+        <li class="spec reveal">
+          <h3>Campañas digitales</h3>
+          <p>Meta y Google Ads: estructura de campaña, creatividades y lectura de métricas.</p>
+          <p class="where"><em>Dónde lo he hecho</em>Agencia Fe Marketing</p>
+        </li>
+      </ul>
+
+      <div class="notes">
+        <div class="reveal">
+          <h4>Por qué importa el UX/UI</h4>
+          <p>Un reel lleva a un link. Si esa página es lenta o confusa, la conversación se pierde ahí. Puedo diseñar la pieza y también la página donde cae el tráfico.</p>
+        </div>
+        <div class="reveal">
+          <h4>Por qué importa la automatización</h4>
+          <p>Uso Make y n8n para lo repetitivo: versionar piezas por canal, ordenar material y armar reportes. Menos tiempo administrativo, más tiempo grabando.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -367,75 +657,121 @@ footer{padding-block:3.5rem;border-top:1px solid var(--dc-line)}
   <!-- TRAYECTORIA -->
   <section id="trayectoria" aria-labelledby="h-tray">
     <div class="wrap">
-      <p class="eyebrow reveal">Trayectoria de impacto</p>
+      <p class="eyebrow reveal">#03 — Trayectoria, formación y stack</p>
       <div class="about-grid">
         <div class="reveal">
-          <h2 id="h-tray" class="display">Del set de TV al dashboard de resultados</h2>
-          <p>Mi formación viene de la <strong>producción audiovisual de alto nivel</strong> (TVN, Leyenda VFX) y de la consultoría estratégica en marketing digital.</p>
-          <p>Ese cruce es mi ventaja: entiendo cómo se construye una historia que capta atención <strong>y</strong> cómo se convierte esa atención en ventas, con datos sobre la mesa.</p>
-          <p>Hoy lidero estrategia digital para marcas y pymes desde <strong>Agencia Fe Marketing</strong>, integrando paid media, UX/UI y automatización con IA.</p>
-          <p>Estoy completando el <strong>Google Project Management Certificate</strong> (Coursera) para llevar metodología formal de gestión de proyectos a cada entrega — cronogramas, riesgos y alcance controlados, no solo creatividad suelta.</p>
+          <h2 id="h-tray" class="display">De dónde viene el criterio</h2>
+          <p>Soy <strong>comunicador audiovisual titulado en DUOC UC</strong> con mención en postproducción, y tengo un diplomado en producción ejecutiva en la Universidad Católica.</p>
+          <p>Trabajé años en producción y postproducción de video, y <strong>desde 2023 me dedico al contenido digital</strong>. Resuelvo la pieza completa sin depender de un equipo externo: guion, cámara, sonido, edición, gráfica y publicación. Después leo las métricas y ajusto lo que viene.</p>
+
+          <h4 class="sub-label">Formación</h4>
+          <ul class="ticks">
+            <li><strong>1997 — 2001 ·</strong> Comunicación Audiovisual, mención Postproducción — DUOC UC, Sede San Carlos de Apoquindo</li>
+            <li><strong>2015 ·</strong> Diplomado en Producción Ejecutiva Audiovisual — Pontificia Universidad Católica de Chile</li>
+            <li><strong>Especializaciones ·</strong> Digital Ad Expert · Growth Hacking · IA para Pymes — Aleph Viña del Mar, AIEP, CENECA SOFOFA</li>
+          </ul>
+
+          <h4 class="sub-label">Stack de trabajo</h4>
+          <ul class="stack">
+            <li>After Effects</li><li>Premiere Pro</li><li>Photoshop</li><li>Illustrator</li>
+            <li>Affinity</li><li>Figma</li><li>Maze</li><li>HTML / CSS</li>
+            <li>Make / n8n</li><li>Midjourney</li><li>ChatGPT · Claude · Gemini</li>
+            <li>Meta Business Manager</li><li>Metricool</li><li>Canva Pro</li>
+          </ul>
         </div>
+
         <ul class="timeline reveal">
-          <li><b>Agencia Fe Marketing</b><span>Estrategia digital, paid media y contenido · 2023 — presente</span></li>
-          <li class="in-progress"><b>Google Project Management Certificate</b><span>Coursera · en curso</span></li>
-          <li><b>Consultoría UX/UI &amp; IA</b><span>Diseño de producto y automatización · portafolio activo</span></li>
-          <li><b>Leyenda VFX</b><span>Coordinación de post-producción, spots de audiencia nacional</span></li>
-          <li><b>TVN</b><span>Producción audiovisual de alto nivel</span></li>
+          <li>
+            <em>Nov 2023 — presente</em>
+            <b>Creador de contenido, diseñador UX/UI y editor</b>
+            <span>Agencia Fe Marketing · Contenido gráfico y audiovisual para múltiples clientes.</span>
+          </li>
+          <li>
+            <em>Feb 2010 — 2015</em>
+            <b>Coordinador de postproducción</b>
+            <span>Leyenda VFX · Coordinación del flujo de video para spot de audiencia nacional.</span>
+          </li>
+          <li>
+            <em>Trayectoria previa</em>
+            <b>Producción y realización en medios</b>
+            <span>Televisión y producción audiovisual. Material no publicado aquí por derechos de autor sobre las piezas.</span>
+          </li>
+          <li class="in-progress">
+            <em>En curso</em>
+            <b>UX/UI Designer</b>
+            <span>Formación activa en diseño de experiencias digitales.</span>
+          </li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- SERVICIOS -->
-  <section id="servicios" class="section-alt" aria-labelledby="h-svc">
+  <!-- CÓMO TRABAJO -->
+  <section id="como-trabajo" class="section-alt" aria-labelledby="h-how">
     <div class="wrap">
-      <p class="eyebrow reveal">Capacidades, no catálogo</p>
-      <h2 id="h-svc" class="display reveal">No vendo piezas sueltas</h2>
-      <p class="svc-intro reveal">Un Reel sin pauta no vende. Una auditoría sin implementación se queda en PDF. Estas cuatro capacidades solo generan resultado cuando se combinan según el cuello de botella real de tu negocio:</p>
-      <ul class="svc">
-        <li class="reveal">
-          <a href="https://wa.me/56945866468?text=Hola%20Daniel,%20me%20interesa%20Paid%20Media" target="_blank" rel="noopener">
-            <h3>Paid Media avanzado</h3>
-            <p>Meta Ads, Google Ads, LinkedIn Ads y TikTok Ads con metodología probada para escalar presupuestos y maximizar conversiones.</p>
-            <span class="go" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12h16m0 0-6-6m6 6-6 6" stroke="#17130E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-        <li class="reveal">
-          <a href="https://wa.me/56945866468?text=Hola%20Daniel,%20me%20interesa%20SEO,%20GEO%20y%20AEO" target="_blank" rel="noopener">
-            <h3>SEO, GEO &amp; AEO</h3>
-            <p>Búsqueda tradicional y visibilidad en motores de IA generativa (ChatGPT, Gemini, Perplexity, AI Overviews). Hoy no basta con rankear en Google: hay que aparecer citado cuando la IA responde por ti.</p>
-            <span class="go" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12h16m0 0-6-6m6 6-6 6" stroke="#17130E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-        <li class="reveal">
-          <a href="https://wa.me/56945866468?text=Hola%20Daniel,%20me%20interesa%20Producci%C3%B3n%20Audiovisual" target="_blank" rel="noopener">
-            <h3>Producción audiovisual</h3>
-            <p>Grabación, edición, postproducción y voz en off. Contenido que se graba una vez y se reutiliza en toda tu estrategia digital.</p>
-            <span class="go" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12h16m0 0-6-6m6 6-6 6" stroke="#17130E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-        <li class="reveal">
-          <a href="https://wa.me/56945866468?text=Hola%20Daniel,%20me%20interesa%20la%20Auditor%C3%ADa%20UX/UI" target="_blank" rel="noopener">
-            <h3>Auditoría UX/UI</h3>
-            <p>Diagnóstico de usabilidad y fricción en tu web o app: dónde pierdes usuarios y qué corregir primero, con prioridades accionables — no rediseño completo.</p>
-            <span class="go" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12h16m0 0-6-6m6 6-6 6" stroke="#17130E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-      </ul>
-      <p class="svc-note reveal">Cada auditoría —SEO/GEO/AEO y UX/UI— incluye una propuesta de implementación con presupuesto y plazos. El diagnóstico es el punto de entrada, no el final del servicio.</p>
+      <p class="eyebrow reveal">#04 — Cómo trabajo</p>
+      <h2 id="h-how" class="display reveal">Producción concentrada, publicación sostenida</h2>
+      <p class="svc-intro reveal">Evito grabar por impulso. Concentro la producción en jornadas planificadas y de ahí sale el material de las semanas siguientes, versionado por canal y por formato. Es más barato, más ordenado y permite mantener una parrilla sin apagar incendios.</p>
+
+      <ol class="steps">
+        <li class="step reveal"><b>#01</b><h3>Plan</h3><p>Pilares y objetivo del mes. Qué se quiere empujar.</p></li>
+        <li class="step reveal"><b>#02</b><h3>Guion</h3><p>Shot list. Nada se graba sin saber para qué pieza es.</p></li>
+        <li class="step reveal"><b>#03</b><h3>Rodaje</h3><p>Jornada concentrada, con equipo mínimo.</p></li>
+        <li class="step reveal"><b>#04</b><h3>Post</h3><p>Edición, subtítulos, gráficas y versiones.</p></li>
+        <li class="step reveal"><b>#05</b><h3>Publicación</h3><p>Calendario, copys y respuesta de comentarios.</p></li>
+        <li class="step reveal"><b>#06</b><h3>Lectura</h3><p>Qué retuvo y qué no. Ajuste del mes siguiente.</p></li>
+      </ol>
+
+      <div class="cols">
+        <div class="reveal">
+          <h4>Con qué cuento</h4>
+          <ul class="ticks">
+            <li>Equipo propio de grabación y edición</li>
+            <li>Autonomía: no dependo de terceros por una pieza</li>
+            <li>Base en Concón, cobertura directa en la V Región y Santiago</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <h4>Qué miro</h4>
+          <ul class="ticks">
+            <li>Retención en los primeros segundos</li>
+            <li>Alcance en cuentas no seguidoras</li>
+            <li>Conversaciones o consultas iniciadas</li>
+            <li>Costo por resultado en campañas pagadas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout reveal">
+        <h3>Cómo parto en un proyecto nuevo</h3>
+        <p>Primero reviso lo que ya existe: qué formatos retienen, qué piezas generaron consultas y cuáles no movieron nada. Después hablo con quien contesta los mensajes, que suele saber mejor que nadie qué pregunta la gente. Con eso armo el primer plan de rodaje. La idea es <strong>publicar contenido dentro del primer mes</strong>, no entregar un documento de estrategia.</p>
+      </div>
+
+      <div class="callout reveal">
+        <h3>Cuando hay pacientes o personas de por medio</h3>
+        <p>He grabado contenido para marcas del área salud y para personas con audiencia propia. En esos contextos el criterio pesa tanto como la cámara: <strong>pedir autorización antes de grabar a alguien</strong>, trabajar en los tiempos reales de la agenda sin frenar la atención y evitar promesas de resultado en el lenguaje de las piezas.</p>
+      </div>
     </div>
   </section>
 
-  <!-- DIAGNÓSTICO -->
-  <section id="diagnostico" class="cta-band" aria-labelledby="h-cta">
+  <!-- CONTACTO -->
+  <section id="contacto" class="cta-band" aria-labelledby="h-cta">
     <div class="wrap">
-      <p class="eyebrow reveal">Sin costo · sin compromiso</p>
-      <h2 id="h-cta" class="display reveal">Diagnóstico gratuito de tu negocio</h2>
-      <p class="reveal">Sesión de 30 minutos + PDF con <b>3 acciones inmediatas</b> que puedes aplicar esta misma semana.</p>
+      <p class="eyebrow reveal">#05 — Contacto</p>
+      <h2 id="h-cta" class="display reveal">Conversemos</h2>
+      <p class="reveal">Este sitio reúne trabajos que hice de principio a fin. Si quieren ver algo específico o conversar sobre un proyecto, escríbanme.</p>
       <div class="hero-ctas reveal">
-        <a class="btn btn-inverse" href="https://wa.me/56945866468?text=Hola%20Daniel,%20quiero%20mi%20diagn%C3%B3stico%20gratuito" target="_blank" rel="noopener">Agendar por WhatsApp <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-inverse" href="https://wa.me/56945866468?text=Hola%20Daniel,%20vi%20tu%20sitio%20y%20quiero%20conversar%20un%20proyecto" target="_blank" rel="noopener">Escribir por WhatsApp <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-inverse" href="Assets/docs/Book_Daniel_Carreno.pdf" target="_blank" rel="noopener">Descargar el book (PDF)</a>
       </div>
+
+      <dl class="contact-grid reveal">
+        <div><dt>Correo</dt><dd><a href="mailto:danielrodrigo.carreno.riveros@gmail.com">danielrodrigo.carreno.riveros@gmail.com</a></dd></div>
+        <div><dt>Teléfono</dt><dd><a href="https://wa.me/56945866468" target="_blank" rel="noopener">+56 9 4586 6468</a></dd></div>
+        <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/drcrnfe/" target="_blank" rel="noopener">linkedin.com/in/drcrnfe</a></dd></div>
+        <div><dt>Ubicación</dt><dd>Concón, Valparaíso, Chile</dd></div>
+      </dl>
+
       <div class="identity reveal">
         <span class="avatar avatar--sm"><span aria-hidden="true">DC</span><img src="Assets/imagenes/Avatar.png" alt="" loading="lazy" onerror="this.remove()"></span>
         <p class="who"><b>Hablarás directamente conmigo</b><span>Sin bots ni intermediarios · respuesta en menos de 24 h hábiles</span></p>
@@ -452,11 +788,13 @@ footer{padding-block:3.5rem;border-top:1px solid var(--dc-line)}
       <ul class="foot-links">
         <li><a href="https://www.linkedin.com/in/drcrnfe/" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="https://portafolio-uxui-dc.vercel.app/" target="_blank" rel="noopener">Portafolio UX/UI</a></li>
-        <li><a href="mailto:DanielRodrigo.Carreno.Riveros@gmail.com">Email</a></li>
+        <li><a href="Assets/docs/Book_Daniel_Carreno.pdf" target="_blank" rel="noopener">Book PDF</a></li>
+        <li><a href="Assets/docs/CV.pdf" target="_blank" rel="noopener">CV</a></li>
+        <li><a href="mailto:danielrodrigo.carreno.riveros@gmail.com">Email</a></li>
         <li><a href="https://wa.me/56945866468" target="_blank" rel="noopener">+56 9 4586 6468</a></li>
       </ul>
     </div>
-    <small>Concón, V Región de Valparaíso, Chile · © 2026 Daniel Carreño Riveros · Consultoría Marketing Digital</small>
+    <small>Concón, V Región de Valparaíso, Chile · © 2026 Daniel Carreño Riveros · Creador de contenido, productor audiovisual y diseñador UX/UI</small>
   </div>
 </footer>
 
